@@ -3,7 +3,7 @@ name: CI
 on: 
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -12,8 +12,8 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
-        version: ['3.9', '3.10']
+        os: [ubuntu-latest]
+        version: ['3.12']
 
     steps:
       - name: code checkout
@@ -26,8 +26,8 @@ jobs:
 
       - name: install flake8
         run: |
-          python -m pip install --upgrade pip
-          pip install flake8
+          python3 -m pipx install --upgrade pip
+          pipx install flake8
 
       - name: run flake8
         run: |
@@ -45,8 +45,8 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.9'
+          python-version: '3.12'
 
       - name: run unit test
         run: |
-          python -m unittest discover
+          python3 -m unittest discover
