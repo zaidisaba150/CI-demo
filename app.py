@@ -15,3 +15,4 @@ if __name__ == "__main__":
     result2 = sub(4, 1)
 
     print(result1, result2)
+    
